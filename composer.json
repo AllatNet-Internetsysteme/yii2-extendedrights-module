@@ -1,0 +1,35 @@
+{
+	"name": "AllatNet-Internetsysteme/yii2-extendedrights-module",
+	"description": "Yii2 User and Rights module",
+	"version": "0.0.1",
+	"type": "yii2-extension",
+	"keywords": [
+		"yii2",
+		"user",
+		"rights",
+		"rbac"
+	],
+	"homepage": "https://github.com/AllatNet-Internetsysteme/yii2-extendedrights-module",
+	"time": "2014-11-14",
+	"license": "GPL",
+	"authors": [
+		{
+			"name": "Christian Höfer",
+			"email": "ch@allatnet.de",
+			"homepage": "http://www.allatnet.de",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/AllatNet-Internetsysteme/yii2-extendedrights-module/issues",
+		"source": "https://github.com/AllatNet-Internetsysteme/yii2-extendedrights-module"
+	},
+	"require": {
+		"yiisoft/yii2": "~2"
+	},
+	"autoload": {
+		"psr-4": {
+			"allatnet\\yii2\\modules\\extendedRights\\": ""
+		}
+	}
+}
