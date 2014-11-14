@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\extendedrights;
+namespace allatnet\yii2\modules\extendedrights;
 
 class ExtendedRights extends \yii\base\Module
 {

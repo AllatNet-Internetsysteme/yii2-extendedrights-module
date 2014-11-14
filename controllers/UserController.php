@@ -1,11 +1,10 @@
 <?php
 
-namespace app\modules\extendedrights\controllers;
+namespace allatnet\yii2\modules\extendedrights\controllers;
 
-use app\modules\extendedrights\models\UserFields;
-use app\modules\extendedrights\models\UserValues;
+use allatnet\yii2\modules\extendedrights\models\UserFields;
+use allatnet\yii2\modules\extendedrights\models\UserValues;
 use yii\web\Controller;
-use app\modules\extendedrights\components\UserMigration;
 use common\models\User;
 
 class UserController extends ERController

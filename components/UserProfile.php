@@ -1,12 +1,12 @@
 <?php
 
-namespace app\modules\extendedrights\components;
+namespace allatnet\yii2\modules\extendedrights\components;
 
 use yii\base\Component;
 use yii\db\Migration;
 use common\models\User;
-use app\modules\extendedrights\models\UserFields;
-use app\modules\extendedrights\models\UserValues;
+use allatnet\yii2\modules\extendedrights\models\UserFields;
+use allatnet\yii2\modules\extendedrights\models\UserValues;
 
 class UserProfile extends Component{
 

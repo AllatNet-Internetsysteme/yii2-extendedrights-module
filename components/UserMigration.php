@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\extendedrights\components;
+namespace allatnet\yii2\modules\extendedrights\components;
 
 use yii\db\Migration;
 

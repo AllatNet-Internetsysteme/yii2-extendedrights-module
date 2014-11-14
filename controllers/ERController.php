@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\extendedrights\controllers;
+namespace allatnet\yii2\modules\extendedrights\controllers;
 
 use yii\web\ConflictHttpException;
 use yii\web\Controller;

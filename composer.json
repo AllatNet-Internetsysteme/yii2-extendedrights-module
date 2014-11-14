@@ -1,7 +1,7 @@
 {
 	"name": "allatnet-internetsysteme/yii2-extendedrights-module",
 	"description": "Yii2 User and Rights module",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"type": "yii2-extension",
 	"keywords": [
 		"yii2",
@@ -29,7 +29,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"allatnet\\yii2\\modules\\extendedRights\\": ""
+			"allatnet\\yii2\\modules\\extendedrights\\": ""
 		}
 	}
 }

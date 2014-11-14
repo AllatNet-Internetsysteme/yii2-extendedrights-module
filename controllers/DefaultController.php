@@ -1,9 +1,9 @@
 <?php
 
-namespace app\modules\extendedrights\controllers;
+namespace allatnet\yii2\modules\extendedrights\controllers;
 
 use yii\web\Controller;
-use app\modules\extendedrights\components\UserMigration;
+use allatnet\yii2\modules\extendedrights\components\UserMigration;
 
 class DefaultController extends ERController
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace app\modules\extendedrights\controllers;
+namespace allatnet\yii2\modules\extendedrights\controllers;
 
-use app\modules\extendedrights\models\User;
+use allatnet\yii2\modules\extendedrights\models\User;
 use yii\filters\auth\AuthMethod;
 use yii\web\Controller;
 

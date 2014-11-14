@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\extendedrights\models;
+namespace allatnet\yii2\modules\extendedrights\models;
 
 use Yii;
 

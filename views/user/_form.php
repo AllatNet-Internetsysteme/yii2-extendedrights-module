@@ -1,5 +1,5 @@
 <?php
-use app\modules\extendedrights\models\UserValues;
+use allatnet\yii2\modules\extendedrights\models\UserValues;
 
 /* @var $user common\models\User */
 /** @var $fields Array */

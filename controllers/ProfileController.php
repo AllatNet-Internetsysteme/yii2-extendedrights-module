@@ -1,9 +1,9 @@
 <?php
 
-namespace app\modules\extendedrights\controllers;
+namespace allatnet\yii2\modules\extendedrights\controllers;
 
 use yii\web\Controller;
-use app\modules\extendedrights\models\UserFields;
+use allatnet\yii2\modules\extendedrights\models\UserFields;
 
 class ProfileController extends ERController
 {

@@ -5,7 +5,7 @@
  * Time: 17:49
  */
 
-namespace app\modules\extendedrights\components;
+namespace allatnet\yii2\modules\extendedrights\components;
 
 
 use yii\base\Component;
