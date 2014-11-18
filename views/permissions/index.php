@@ -1,6 +1,5 @@
 <?php
 use yii\helpers\Html;
-use yii\grid\GridView;
 
 echo $this->render('/default/_navigation', []);
 

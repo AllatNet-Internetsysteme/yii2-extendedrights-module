@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-use app\modules\extendedrights\components\Generator;
+use allatnet\yii2\modules\extendedrights\components\Generator;
 
 echo $this->render('/default/_navigation', []);
 

@@ -19,7 +19,7 @@ class UserValues extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'hk_user_values';
+        return '{{%user_values}}';
     }
 
     /**

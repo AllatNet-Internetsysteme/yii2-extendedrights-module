@@ -25,7 +25,7 @@ class User extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'hk_user';
+        return '{{%user}}';
     }
 
     /**

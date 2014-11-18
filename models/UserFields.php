@@ -18,7 +18,7 @@ class UserFields extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'hk_user_fields';
+        return '{{%user_fields}}';
     }
 
     /**

@@ -12,7 +12,7 @@ use yii\helpers\Html;
 
 <table class="table table-striped">
 	<?php
-	/** @var \app\modules\extendedrights\models\UserFields $field */
+	/** @var \allatnet\yii2\modules\extendedrights\components\UserFields $field */
 	foreach ($fields as $field) {
 		?>
 		<tr>
