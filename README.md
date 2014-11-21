@@ -8,22 +8,19 @@ Cofiguration
 ==================
 Set DbManager as default AuthManager Class
 
-------------------------
 	'components' => [
 		'authManager'=>[
 				'class'=>'yii\rbac\DbManager',
 			],
 	    ],
-------------------------
+
 
 Activate RBAC Auth Manager
 
-------------------------
-yii migrate --migrationPath=@yii/rbac/migrations/
-------------------------
+	yii migrate --migrationPath=@yii/rbac/migrations/
 
 Set Module Settings in your main-local.php config
-------------------------
+
 	'modules'    => [
 		'extendedrights' => [
 			'class' => '\allatnet\yii2\modules\extendedrights\ExtendedRights',
@@ -34,4 +31,3 @@ Set Module Settings in your main-local.php config
 			]
 		],
 	],
-------------------------
