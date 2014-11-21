@@ -15,6 +15,7 @@ class Generator extends Component {
 	private $controllers = [];
 
 	public function getControllerActions(){
+		// Frontend Controllers
 		$this->getControllers(\Yii::$app->basePath.DIRECTORY_SEPARATOR.'controllers');
 		$directory = scandir(\Yii::$app->basePath.DIRECTORY_SEPARATOR.'modules');
 		foreach ($directory as $module) {
@@ -61,7 +62,6 @@ class Generator extends Component {
 							'path'=>$filePath,
 							'module'=>ucfirst($module),
 						);
-
 					}
 				}
 			}
