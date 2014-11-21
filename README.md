@@ -6,7 +6,7 @@ Extended Rights with UserProfile for Yii2
 
 Cofiguration
 ==================
-Set DbManager as default AuthManager Class
+Set DbManager as default AuthManager class in your main-local.php config
 
 	'components' => [
 		'authManager'=>[
@@ -15,7 +15,7 @@ Set DbManager as default AuthManager Class
 	    ],
 
 
-Activate RBAC Auth Manager
+Activate RBAC Auth Manager. Run following on command line
 
 	yii migrate --migrationPath=@yii/rbac/migrations/
 
@@ -31,3 +31,5 @@ Set Module Settings in your main-local.php config
 			]
 		],
 	],
+
+Thats it, it is installed. For custom tables the extension generates itself.
