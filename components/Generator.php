@@ -15,7 +15,6 @@ class Generator extends Component {
 	private $controllers = [];
 
 	public function getControllerActions(){
-		// Frontend Controllers
 		$this->getControllers(\Yii::$app->basePath.DIRECTORY_SEPARATOR.'controllers');
 		$directory = scandir(\Yii::$app->basePath.DIRECTORY_SEPARATOR.'modules');
 		foreach ($directory as $module) {
@@ -48,6 +47,13 @@ class Generator extends Component {
 	}
 
 	public function getControllers($path, $module = '') {
+		$extendedRights = \Yii::$app->getModule('extendedrights');
+		$permissionPrefix = '';
+		if (isset($extendedRights->params['permissionPrefix']))
+			$permissionPrefix = $extendedRights->params['permissionPrefix'];
+		if(!empty($permissionPrefix))
+			$permissionPrefix = $permissionPrefix.'.';
+
 		if(is_dir($path)){
 			$controllerDirectory = scandir($path);
 			foreach ($controllerDirectory as $file) {
@@ -57,11 +63,12 @@ class Generator extends Component {
 					{
 						$name = substr($file, 0, -14);
 						$this->controllers[ strtolower($filePath) ] = array(
-							'name'=>$name,
+							'name'=>$permissionPrefix.$name,
 							'file'=>$file,
 							'path'=>$filePath,
 							'module'=>ucfirst($module),
 						);
+
 					}
 				}
 			}

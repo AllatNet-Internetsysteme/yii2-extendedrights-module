@@ -28,6 +28,7 @@ Set Module Settings in your main-local.php config
 				'superuser'=>['Your Superadmin user ID'],
 				'guest'=>'DefaultRoleName',
 				'loginUrl'=>'/site/login',
+				'permissionPrefix'=>'frontend',
 			]
 		],
 	],
