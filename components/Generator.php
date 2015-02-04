@@ -48,11 +48,7 @@ class Generator extends Component {
 
 	public function getControllers($path, $module = '') {
 		$extendedRights = \Yii::$app->getModule('extendedrights');
-		$permissionPrefix = '';
-		if (isset($extendedRights->params['permissionPrefix']))
-			$permissionPrefix = $extendedRights->params['permissionPrefix'];
-		if(!empty($permissionPrefix))
-			$permissionPrefix = $permissionPrefix.'.';
+		$permissionPrefix = $extendedRights->getPermissionPrefix();
 
 		if(is_dir($path)){
 			$controllerDirectory = scandir($path);

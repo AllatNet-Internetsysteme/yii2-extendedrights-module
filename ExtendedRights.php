@@ -12,4 +12,17 @@ class ExtendedRights extends \yii\base\Module
 
         // custom initialization code goes here
     }
+
+    /**
+     * @return string
+     */
+    public function getPermissionPrefix() {
+        $extendedRights = \Yii::$app->getModule('extendedrights');
+        $permissionPrefix = '';
+        if (isset($extendedRights->params['permissionPrefix']))
+            $permissionPrefix = $extendedRights->params['permissionPrefix'];
+        if(!empty($permissionPrefix))
+            $permissionPrefix = $permissionPrefix.'.';
+        return $permissionPrefix;
+    }
 }

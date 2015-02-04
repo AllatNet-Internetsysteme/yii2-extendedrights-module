@@ -18,12 +18,7 @@ class ERController extends Controller
 	public function beforeAction($action) {
 		$extendedRights   = \Yii::$app->getModule('extendedrights');
 		$loginUrl         = $extendedRights->params['loginUrl'];
-		$permissionPrefix = '';
-		if (isset($extendedRights->params['permissionPrefix']))
-			$permissionPrefix = $extendedRights->params['permissionPrefix'];
-
-		if (!empty($permissionPrefix))
-			$permissionPrefix = $permissionPrefix.'.';
+		$permissionPrefix = $extendedRights->getPermissionPrefix();
 
 		$allowed = true;
 		if (!in_array(\Yii::$app->user->id, $extendedRights->params['superuser'])) {
