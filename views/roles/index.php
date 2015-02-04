@@ -3,11 +3,6 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\bootstrap\Modal;
 
-echo '<pre>';
-print_r(Yii::$app->id);
-echo '</pre>';
-
-
 echo $this->render('/default/_navigation', []);
 
 ?>

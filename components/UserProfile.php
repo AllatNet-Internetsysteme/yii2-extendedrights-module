@@ -7,6 +7,7 @@ use yii\db\Migration;
 use common\models\User;
 use allatnet\yii2\modules\extendedrights\models\UserFields;
 use allatnet\yii2\modules\extendedrights\models\UserValues;
+use yii\helpers\ArrayHelper;
 
 class UserProfile extends Component{
 
@@ -42,6 +43,43 @@ class UserProfile extends Component{
 			}
 		}
 		return $profile;
+	}
+
+	/**
+	 * @param $id
+	 *
+	 * @return array
+	 */
+	public static function getRolesByUser($id) {
+		$authManager = \Yii::$app->authManager;
+		$rolesReturn = [];
+		$roles = $authManager->getRolesByUser($id);
+		/** @var \yii\rbac\Role $role */
+		foreach ($roles as $role) {
+			if($role->type == \yii\rbac\Role::TYPE_ROLE){
+				$rolesReturn = ArrayHelper::merge($rolesReturn, self::getChildRolesRecursive($role));
+				$rolesReturn[] = $role;
+			}
+		}
+		return $rolesReturn;
+	}
+
+	/**
+	 * @param $roleName \yii\rbac\Item
+	 *
+	 * @return array
+	 */
+	private static function getChildRolesRecursive($roleName) {
+		$authManager = \Yii::$app->authManager;
+		$rolesReturn = [];
+		$roles = $authManager->getChildren($roleName->name);
+		foreach ($roles as $role) {
+			if($role->type == \yii\rbac\Role::TYPE_ROLE){
+				$rolesReturn = ArrayHelper::merge($rolesReturn, self::getChildRolesRecursive($role));
+				$rolesReturn[] = $role;
+			}
+		}
+		return $rolesReturn;
 	}
 
 	/**
