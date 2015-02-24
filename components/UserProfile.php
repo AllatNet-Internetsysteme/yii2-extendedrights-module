@@ -2,6 +2,7 @@
 
 namespace allatnet\yii2\modules\extendedrights\components;
 
+use allatnet\yii2\modules\extendedrights\ExtendedRights;
 use yii\base\Component;
 use yii\db\Migration;
 use common\models\User;
@@ -21,11 +22,12 @@ class UserProfile extends Component{
 	 * @return UserProfile
 	 */
 	public static function findByUser($id) {
+		$userModel = ExtendedRights::getInstance()->userModel;
 		$profile = new UserProfile();
 		if(is_int($id)){
-			$user = User::findOne(['id'=>$id]);
+			$user = $userModel::findOne(['id'=>$id]);
 		}else{
-			$user = User::findOne(['username', $id]);
+			$user = $userModel::findOne(['username', $id]);
 		}
 		$profile->id = $user->id;
 		$profile->username = $user->username;
@@ -88,8 +90,9 @@ class UserProfile extends Component{
 	 * @return array
 	 */
 	public static function findAll() {
+		$userModel = ExtendedRights::getInstance()->userModel;
 		$profiles = [];
-		$users = User::find()->all();
+		$users = $userModel::find()->all();
 		if(count($users) > 0){
 			foreach ($users as $user) {
 				$profile = new UserProfile();
