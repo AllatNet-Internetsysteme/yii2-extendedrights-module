@@ -5,19 +5,21 @@ namespace allatnet\yii2\modules\extendedrights\controllers;
 use allatnet\yii2\modules\extendedrights\models\UserFields;
 use allatnet\yii2\modules\extendedrights\models\UserValues;
 use yii\web\Controller;
-use common\models\User;
 
 class UserController extends ERController
 {
-    public function actionIndex()
-    {
-        return $this->render('index', [
-			'users'=>User::find()->asArray()->all(),
+	public function actionIndex()
+	{
+		$extendedRights = \Yii::$app->getModule('extendedrights');
+		$user = new $extendedRights->userModel;
+		return $this->render('index', [
+			'users'=>$user::find()->asArray()->all(),
 		]);
-    }
+	}
 
 	public function actionCreate() {
-		$user = new User();
+		$extendedRights = \Yii::$app->getModule('extendedrights');
+		$user = new $extendedRights->userModel;
 		$fields = UserFields::find()->asArray()->all();
 		if(isset($_POST['username'])){
 			$user->username = $_POST['username'];
@@ -46,7 +48,9 @@ class UserController extends ERController
 	}
 
 	public function actionUpdate($id) {
-		$user = User::findOne(['id'=>$id]);
+		$extendedRights = \Yii::$app->getModule('extendedrights');
+		$user =  $extendedRights->userModel;
+		$user = $user::findOne(['id'=>$id]);
 		$fields = UserFields::find()->asArray()->all();
 		if(isset($_POST['username'])){
 			$user->username = $_POST['username'];
@@ -85,7 +89,9 @@ class UserController extends ERController
 		}
 
 		// Delete User
-		$user = User::findOne(['id'=>$id]);
+		$extendedRights = \Yii::$app->getModule('extendedrights');
+		$user = new $extendedRights->userModel;
+		$user = $user::findOne(['id'=>$id]);
 		$user->delete();
 		$this->redirect(['index']);
 	}
