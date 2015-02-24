@@ -24,11 +24,17 @@ class UserProfile extends Component{
 	public static function findByUser($id) {
 		$userModel = ExtendedRights::getInstance()->userModel;
 		$profile = new UserProfile();
+
 		if(is_int($id)){
 			$user = $userModel::findOne(['id'=>$id]);
 		}else{
 			$user = $userModel::findOne(['username', $id]);
 		}
+
+		if(!$user){
+			return new UserProfile();
+		}
+
 		$profile->id = $user->id;
 		$profile->username = $user->username;
 		$profile->email = $user->email;
@@ -136,7 +142,11 @@ class UserProfile extends Component{
 	 * @return mixed
 	 */
 	public function __get($key) {
-		return $this->fields[$key];
+		if(isset($this->fields[$key])){
+			return $this->fields[$key];
+		}else{
+			return false;
+		}
 	}
 
 	/**
