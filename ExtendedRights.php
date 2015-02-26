@@ -10,7 +10,7 @@ class ExtendedRights extends \yii\base\Module
     public function init()
     {
 
-        if(empty($this->params['userModel'])){
+        if(!empty($this->params['userModel'])){
             $this->userModel = $this->params['userModel'];
         }else{
             // Required for Backward Compatibility
