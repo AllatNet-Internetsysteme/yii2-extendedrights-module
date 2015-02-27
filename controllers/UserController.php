@@ -58,7 +58,7 @@ class UserController extends ERController
 			if(!empty($_POST['password']) && $_POST['password'] != '*****'){
 				$user->setPassword($_POST['password']);
 			}
-			$user->save();
+			$user->save(false);
 			if(count($_POST['UserFields']) > 0){
 				foreach ($_POST['UserFields'] as $key => $postValue) {
 					$value = UserValues::findOne(['idField'=>$key, 'idUser'=>$user->id]);
