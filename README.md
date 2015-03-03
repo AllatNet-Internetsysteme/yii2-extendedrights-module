@@ -35,3 +35,17 @@ Set Module Settings in your main-local.php config
 	],
 
 Thats it, it is installed. For custom tables the extension generates itself.
+
+Usage
+==================
+Admin Panel: domain.tld/extendedrights
+Admin Panel is currently only Germen
+
+Get user with Profile
+
+	use allatnet\yii2\modules\extendedrights\components\UserProfile;
+	UserProfile::findByUser(idUser);
+
+	// get firstname from custom attributes
+	UserProfile::findByUser(idUser)->firstname;
+
