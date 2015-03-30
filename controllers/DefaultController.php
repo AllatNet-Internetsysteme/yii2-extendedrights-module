@@ -9,8 +9,6 @@ class DefaultController extends ERController
 {
     public function actionIndex()
     {
-		$userMigration = new UserMigration();
-		$userMigration->migrateUser();
         return $this->render('index');
     }
 }

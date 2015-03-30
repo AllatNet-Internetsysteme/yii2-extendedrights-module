@@ -6,18 +6,26 @@ Extended Rights with UserProfile for Yii2
 
 Cofiguration
 ==================
-Set DbManager as default AuthManager class in your main-local.php config
+Set DbManager as default AuthManager and User-Identity class in your main-local.php config
 
 	'components' => [
 		'authManager'=>[
-				'class'=>'yii\rbac\DbManager',
-			],
-	    ],
+			'class'=>'yii\rbac\DbManager',
+        	'defaultRoles'=>['guest'],
+		],
+        'user' => [
+            'identityClass' => '\allatnet\yii2\modules\extendedrights\models\User',
+        ],
+	],
 
 
 Activate RBAC Auth Manager. Run following on command line
 
 	yii migrate --migrationPath=@yii/rbac/migrations/
+
+Migrate Extendedrights Tables
+
+	yii migrate --migrationPath=@vendor/allatnet-internetsysteme/yii2-extendedrights-module/migrations
 
 Set Module Settings in your main-local.php config
 
@@ -34,12 +42,14 @@ Set Module Settings in your main-local.php config
 		],
 	],
 
-Thats it, it is installed. For custom tables the extension generates itself.
+Make Sure that you Use Extendedrights its Own User identity class. Don't use Yii2's default identity class
+
+Thats it, it is installed.
 
 Usage
 ==================
 Admin Panel: domain.tld/extendedrights
-Admin Panel is currently only Germen
+Admin Panel is currently only German
 
 Get user with Profile
 
