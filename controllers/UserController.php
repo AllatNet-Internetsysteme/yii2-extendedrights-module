@@ -35,7 +35,7 @@ class UserController extends ERController
 						$value->idField = $key;
 						$value->idUser = $user->id;
 					}
-					$value->fieldValue = $postValue;
+					$value->fieldValue = trim($postValue);
 					$value->save();
 				}
 			}
@@ -67,7 +67,7 @@ class UserController extends ERController
 						$value->idField = $key;
 						$value->idUser = $user->id;
 					}
-					$value->fieldValue = $postValue;
+					$value->fieldValue = trim($postValue);
 					$value->save();
 				}
 			}
