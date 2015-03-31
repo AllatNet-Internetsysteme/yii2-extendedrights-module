@@ -15,6 +15,7 @@ Set DbManager as default AuthManager and User-Identity class in your main-local.
 		],
         'user' => [
             'identityClass' => '\allatnet\yii2\modules\extendedrights\models\User',
+            'class' => '\allatnet\yii2\modules\extendedrights\models\User',
         ],
 	],
 
@@ -45,6 +46,11 @@ Set Module Settings in your main-local.php config
 Make Sure that you Use Extendedrights its Own User identity class. Don't use Yii2's default identity class
 
 Thats it, it is installed.
+
+Login with
+
+	User: admin
+	Passwort: admin
 
 Usage
 ==================

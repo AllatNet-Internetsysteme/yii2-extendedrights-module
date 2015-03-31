@@ -22,7 +22,7 @@ class UserController extends ERController
 		$user = new $extendedRights->userModel;
 		$fields = UserFields::find()->asArray()->all();
 		if(isset($_POST['username'])){
-			$user->username = $_POST['username'];
+			$user->username = trim($_POST['username']);
 			$user->email = $_POST['email'];
 			$user->setPassword($_POST['password']);
 			$user->generateAuthKey();
