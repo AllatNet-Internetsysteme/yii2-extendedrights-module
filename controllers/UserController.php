@@ -26,20 +26,21 @@ class UserController extends ERController
 			$user->email = $_POST['email'];
 			$user->setPassword($_POST['password']);
 			$user->generateAuthKey();
-			$user->save();
-			if(count($_POST['UserFields']) > 0){
-				foreach ($_POST['UserFields'] as $key => $postValue) {
-					$value = UserValues::findOne(['idField'=>$key, 'idUser'=>$user->id]);
-					if($value === null){
-						$value = new UserValues();
-						$value->idField = $key;
-						$value->idUser = $user->id;
+			if($user->save()){
+				if(isset($_POST['UserFields']) AND count($_POST['UserFields']) > 0){
+					foreach ($_POST['UserFields'] as $key => $postValue) {
+						$value = UserValues::findOne(['idField'=>$key, 'idUser'=>$user->id]);
+						if($value === null){
+							$value = new UserValues();
+							$value->idField = $key;
+							$value->idUser = $user->id;
+						}
+						$value->fieldValue = trim($postValue);
+						$value->save();
 					}
-					$value->fieldValue = trim($postValue);
-					$value->save();
 				}
+				$this->redirect(['index']);
 			}
-			$this->redirect(['index']);
 		}
 		return $this->render('create', [
 			'user'=>$user,
@@ -59,7 +60,7 @@ class UserController extends ERController
 				$user->setPassword($_POST['password']);
 			}
 			$user->save(false);
-			if(count($_POST['UserFields']) > 0){
+			if(isset($_POST['UserFields']) AND count($_POST['UserFields']) > 0){
 				foreach ($_POST['UserFields'] as $key => $postValue) {
 					$value = UserValues::findOne(['idField'=>$key, 'idUser'=>$user->id]);
 					if($value === null){
