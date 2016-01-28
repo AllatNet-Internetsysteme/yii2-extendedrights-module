@@ -2,10 +2,9 @@
 
 namespace allatnet\yii2\modules\extendedrights\controllers;
 
-use yii\web\ConflictHttpException;
+use allatnet\yii2\modules\extendedrights\components\RightsException;
 use yii\web\Controller;
 use yii\filters\AccessControl;
-use yii\web\HttpException;
 
 class ERController extends Controller
 {
@@ -54,7 +53,7 @@ class ERController extends Controller
 					$this->redirect([$loginUrl]);
 				}
 			} else {
-				throw new HttpException(404, 'Permission denied');
+				throw new RightsException(404, 'Permission denied');
 			}
 		}
 
