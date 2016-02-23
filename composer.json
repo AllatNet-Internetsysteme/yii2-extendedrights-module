@@ -1,7 +1,7 @@
 {
 	"name": "allatnet-internetsysteme/yii2-extendedrights-module",
 	"description": "Yii2 User and Rights module",
-	"version": "0.2.3",
+	"version": "0.2.4",
 	"type": "yii2-extension",
 	"keywords": [
 		"yii2",
