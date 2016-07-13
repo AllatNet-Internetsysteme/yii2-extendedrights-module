@@ -23,6 +23,7 @@ class UserProfile extends Component{
 	 */
 	public static function findByUser($id) {
 		$userModel = ExtendedRights::getInstance()->userModel;
+		/** @var UserProfile $profile */
 		$profile = new UserProfile();
 
 		if(is_int($id)){
@@ -39,15 +40,17 @@ class UserProfile extends Component{
 		$profile->username = $user->username;
 		$profile->email = $user->email;
 		// get Fields
-		$profileFields = UserFields::find()->all();
+		$profileFields = UserFields::find()->asArray()->all();
 		if(count($profileFields) > 0){
 			foreach ($profileFields as $field) {
 				$value = '';
+				/** @var UserValues $values */
 				$values = UserValues::findOne(['idUser'=>$profile->id, 'idField'=>$field['id']]);
 				if($values !== null){
 					$value = $values->fieldValue;
 				}
-				$profile->$field['fieldName'] = $value;
+				$fieldName = $field['fieldName'];
+				$profile->$fieldName = $value;
 			}
 		}
 		return $profile;
@@ -93,7 +96,7 @@ class UserProfile extends Component{
 	/**
 	 * Find all User Profiles
 	 *
-	 * @return array
+	 * @return UserProfile[]
 	 */
 	public static function findAll() {
 		$userModel = ExtendedRights::getInstance()->userModel;
@@ -101,19 +104,24 @@ class UserProfile extends Component{
 		$users = $userModel::find()->all();
 		if(count($users) > 0){
 			foreach ($users as $user) {
+				/** @var UserProfile $profile */
 				$profile = new UserProfile();
 				$profile->id = $user->id;
 				$profile->username = $user->username;
 				$profile->email = $user->email;
-				$profileFields = UserFields::find()->all();
+				/** @var array $profileFields */
+				$profileFields = UserFields::find()->asArray()->all();
+
 				if(count($profileFields) > 0){
 					foreach ($profileFields as $field) {
 						$value = '';
+						/** @var UserValues $values */
 						$values = UserValues::findOne(['idUser'=>$profile->id, 'idField'=>$field['id']]);
 						if($values !== null){
 							$value = $values->fieldValue;
 						}
-						$profile->$field['fieldName'] = $value;
+						$fieldName = $field['fieldName'];
+						$profile->$fieldName = $value;
 					}
 				}
 				$profiles[] = $profile;
