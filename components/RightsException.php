@@ -13,13 +13,13 @@ use yii\web\HttpException;
 
 class RightsException extends HttpException
 {
-    public function __construct($status, $message = null, $code = 0, \Exception $previous = null)
-    {
-        if(empty($status))
-            $status = 403;
-        if(empty($message))
-            $message = 'Berechtigungsfehler';
-        $this->statusCode = $status;
-        parent::__construct($message, $code, $previous);
-    }
+
+	public function __construct($status = null, $message = null, $code = 0, \Exception $previous = null) {
+		if (empty($status))
+			$status = 403;
+		if (empty($message))
+			$message = 'Berechtigungsfehler';
+		$this->statusCode = $status;
+		parent::__construct($status, $message, $code, $previous);
+	}
 }
