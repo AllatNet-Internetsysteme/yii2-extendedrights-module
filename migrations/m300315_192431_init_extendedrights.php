@@ -29,7 +29,7 @@ class m300315_192431_init_extendedrights extends Migration
 			// Create user_fields table
 			$this->createTable('{{%user_values}}', [
 				"id"         => Schema::TYPE_PK,
-				"userField"  => Schema::TYPE_INTEGER,
+				"idField"  => Schema::TYPE_INTEGER,
 				"idUser"     => Schema::TYPE_INTEGER,
 				"fieldValue" => Schema::TYPE_TEXT,
 			], $tableOptions);

@@ -16,11 +16,13 @@ class Generator extends Component {
 
 	public function getControllerActions(){
 		$this->getControllers(\Yii::$app->basePath.DIRECTORY_SEPARATOR.'controllers');
-		$directory = scandir(\Yii::$app->basePath.DIRECTORY_SEPARATOR.'modules');
-		foreach ($directory as $module) {
-			if($module{0} !== '.'){
-				$modulePath = \Yii::$app->basePath.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'controllers';
-				$this->getControllers($modulePath, $module);
+		if(is_dir(\Yii::$app->basePath.DIRECTORY_SEPARATOR.'modules')){
+			$directory = scandir(\Yii::$app->basePath.DIRECTORY_SEPARATOR.'modules');
+			foreach ($directory as $module) {
+				if($module{0} !== '.'){
+					$modulePath = \Yii::$app->basePath.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'controllers';
+					$this->getControllers($modulePath, $module);
+				}
 			}
 		}
 

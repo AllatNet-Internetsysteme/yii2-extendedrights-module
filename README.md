@@ -15,7 +15,7 @@ Set DbManager as default AuthManager and User-Identity class in your main-local.
 		],
         'user' => [
             'identityClass' => '\allatnet\yii2\modules\extendedrights\models\User',
-            'class' => '\allatnet\yii2\modules\extendedrights\models\User',
+            'class' => 'yii\web\User',
         ],
 	],
 
