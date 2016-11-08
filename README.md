@@ -38,7 +38,7 @@ Set Module Settings in your main-local.php config
 				'guest'=>'DefaultRoleName',
 				'loginUrl'=>'/site/login',
 				'permissionPrefix'=>'frontend',
-				'userModel'=>'app\models\User',
+				//'userModel'=>'app\models\User',
 			]
 		],
 	],

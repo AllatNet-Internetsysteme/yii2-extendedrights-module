@@ -27,18 +27,27 @@ class ERController extends Controller
 		} else {
 			$controllerId = $this->id;
 		}
+		$actionId = '';
+		if(strpos($action->id,'-')){
+			$ids = explode('-', $action->id);
+			foreach ($ids as $id) {
+				$actionId .= ucfirst($id);
+			}
+		} else {
+			$actionId = ucfirst($action->id);
+		}
 
 		$allowed = true;
 		if (!in_array(\Yii::$app->user->id, $extendedRights->params['superuser'])) {
 			if ($this->module instanceof \yii\web\Application) {
 				// Normaler controller
-				if (!\Yii::$app->user->can($permissionPrefix.$controllerId.'.'.$action->id) && !\Yii::$app->user->can($permissionPrefix.$controllerId.'.*')) {
+				if (!\Yii::$app->user->can($permissionPrefix.$controllerId.'.'.$actionId) && !\Yii::$app->user->can($permissionPrefix.$controllerId.'.*')) {
 					$allowed = false;
 				}
 			} else {
 				// Modul
 				if (
-					!\Yii::$app->user->can($permissionPrefix.ucfirst($this->module->id).'.'.$controllerId.'.'.$action->id) &&
+					!\Yii::$app->user->can($permissionPrefix.ucfirst($this->module->id).'.'.$controllerId.'.'.$actionId) &&
 					!\Yii::$app->user->can($permissionPrefix.ucfirst($this->module->id).'.'.$controllerId.'.*') &&
 					!\Yii::$app->user->can($permissionPrefix.ucfirst($this->module->id).'.*')
 				) {
